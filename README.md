@@ -1,5 +1,5 @@
 # Loop
-Bring Your Own Laptop
+Bring Your Own Laptop - Building blocks for Students
 
 ## Features
 - User Account and Profile
@@ -14,6 +14,13 @@ Bring Your Own Laptop
 - VS Code or any Code editor
 - Node.js installed on your machine
 - npm package manager
+
+## Technology Stack:
+
+- Next.js
+- Supabase
+- Typescript
+- Tailwind CSS
 
 ## Installation
 
