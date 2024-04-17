@@ -2,8 +2,12 @@
 Bring Your Own Laptop
 
 ## Features
+- User Account and Profile
+- Newsletter 
+- Discussions, Polls 
 
 ## Usage
+
 
 ## Prerequisites
 
