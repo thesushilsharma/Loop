@@ -5,8 +5,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Please provide a detailed description of the new feature you are suggesting by filling out all the required sections.
-        ⚠️ Please ensure that this feature request has not been suggested before in the discussion or issue tab.
+        ⚠️ Please fill out all required sections for your feature request and ensure it has not been suggested before in the discussion or issue tab.
 
   - type: textarea
     id: feature-description
