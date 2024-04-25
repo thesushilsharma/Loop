@@ -35,4 +35,4 @@ Feel free to fork the repository and submit pull requests with your improvements
 
 ## License
 
-This project is licensed under the MIT License.  See the [LICENSE](https://github.com/thesushilsharma/Loop/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License.  See the [LICENSE](LICENSE) file for details.
