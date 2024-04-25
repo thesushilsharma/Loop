@@ -33,10 +33,6 @@ Please do not try to push directly to this repo unless you are a maintainer.
 Please use the corresponding label when creating an issue.
 Before you create a new issue, please do a search in [open issues](https://github.com/thesushilsharma/Loop/issues) to see if the issue or feature request has already been filed.
 
-### Getting Help
-
-Contact a maintainer of Loop with any questions or help you might need.
-
 ### Creating Pull Requests
 
 * Please refer to the article on ["fork and pull request"](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) and contributing to this project.
