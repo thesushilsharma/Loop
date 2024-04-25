@@ -9,7 +9,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        * Before you file an issue read the [Contributing guide](../CONTRIBUTING.md).
+        * Before you file an issue read the [Contributing guide](https://github.com/thesushilsharma/Loop/blob/main/.github/CONTRIBUTING.md).
         * Please ensure it has not been requested before in the discussion or issue tab.
   
   - type: textarea
