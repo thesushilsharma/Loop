@@ -1,5 +1,5 @@
 # Loop
-Bring Your Own Laptop - Building blocks for Students
+Bring Your Own Laptop - Building Blocks for Students
 
 ## Features
 - User Account and Profile
@@ -11,7 +11,7 @@ Bring Your Own Laptop - Building blocks for Students
 
 ## Prerequisites
 
-- VS Code or any Code editor
+- VS Code or any Code Editor
 - Node.js installed on your machine
 - npm package manager
 
