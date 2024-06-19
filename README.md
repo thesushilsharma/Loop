@@ -19,7 +19,8 @@ Bring Your Own Laptop - Building Blocks for Students
 ## Technology Stack
 
 - Next.js
-- Supabase (Database and Auth)
+- Supabase Database
+- Kinde
 - Typescript
 - Tailwind CSS
 
