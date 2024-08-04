@@ -69,7 +69,7 @@ export class AuthService {
         redirectUrl,
     }: {
         redirectUrl: string;
-    }): Promise<void> {
+    }): Promise<any> {
         try {
             if (!redirectUrl) {
                 throw new Error('Missing required parameter: "url"');
