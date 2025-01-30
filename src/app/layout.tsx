@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google"
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
+import { AuthProvider } from "@/context/AuthProvider";
 
-import { cn } from "@/lib/utils"
-
-const fontSans = FontSans({
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  variable: "--font-sans",
-})
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Bring Your Own Laptop",
@@ -20,13 +25,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="dark">
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >{children}</body>
-    </html>
+    <AuthProvider>
+      <html lang="en" suppressHydrationWarning className="dark">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          {children}
+          <Toaster />
+        </body>
+      </html>
+    </AuthProvider>
   );
 }
