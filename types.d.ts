@@ -15,3 +15,7 @@ type University = {
     linkedinLink?: string; // Optional
     rating: 1 | 2 | 3 | 4 | 5; // Union type for specific values
 }
+
+
+
+type ButtonVariant = "default" | "outline" | "link" | "destructive" | "secondary" | "ghost";
