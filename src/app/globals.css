@@ -1,84 +1,72 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-}
-
-
-@custom-variant dark (&:where(.dark, .dark *));
-
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.75rem;
+    --background: 330 100% 99%;
+    --foreground: 330 10% 10%;
+    --card: 330 100% 98%;
+    --card-foreground: 330 10% 10%;
+    --popover: 330 100% 98%;
+    --popover-foreground: 330 10% 10%;
+    --primary: 330 90% 60%;
+    --primary-foreground: 330 10% 98%;
+    --secondary: 275 90% 80%;
+    --secondary-foreground: 275 10% 10%;
+    --muted: 330 20% 90%;
+    --muted-foreground: 330 10% 40%;
+    --accent: 30 90% 80%;
+    --accent-foreground: 30 10% 10%;
+    --destructive: 0 90% 60%;
+    --destructive-foreground: 0 10% 98%;
+    --border: 330 60% 90%;
+    --input: 330 60% 90%;
+    --ring: 330 90% 60%;
+    --radius: 0.5rem;
+    --chart-1: 330 90% 60%;
+    --chart-2: 275 90% 60%;
+    --chart-3: 30 90% 60%;
+    --chart-4: 180 90% 60%;
+    --chart-5: 60 90% 60%;
   }
-
+ 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    --background: 330 50% 10%;
+    --foreground: 330 10% 95%;
+    --card: 330 50% 12%;
+    --card-foreground: 330 10% 95%;
+    --popover: 330 50% 12%;
+    --popover-foreground: 330 10% 95%;
+    --primary: 330 90% 60%;
+    --primary-foreground: 330 10% 98%;
+    --secondary: 275 90% 40%;
+    --secondary-foreground: 275 10% 98%;
+    --muted: 330 30% 20%;
+    --muted-foreground: 330 10% 70%;
+    --accent: 30 90% 40%;
+    --accent-foreground: 30 10% 98%;
+    --destructive: 0 90% 40%;
+    --destructive-foreground: 0 10% 98%;
+    --border: 330 60% 20%;
+    --input: 330 60% 20%;
+    --ring: 330 90% 60%;
+    --chart-1: 330 90% 60%;
+    --chart-2: 275 90% 60%;
+    --chart-3: 30 90% 60%;
+    --chart-4: 180 90% 60%;
+    --chart-5: 60 90% 60%;
   }
 }
 
-
 @layer base {
-  /* * {
+  * {
     @apply border-border;
-  } */
-
+  }
   body {
     @apply bg-background text-foreground;
   }

@@ -27,11 +27,13 @@ export default function RootLayout({
 }>) {
   return (
     <AuthProvider>
-      <html lang="en" suppressHydrationWarning className="dark">
+      <html lang="en" suppressHydrationWarning>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <QueryProvider>{children}</QueryProvider>
+          <QueryProvider>
+            {children}
+          </QueryProvider>
           <Toaster />
         </body>
       </html>
