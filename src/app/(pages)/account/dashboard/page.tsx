@@ -1,96 +1,173 @@
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import React from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Pencil, MessageSquare, Search, ArrowUpRight, Star } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
-async function Dashboard() {
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
+export default function Dashboard() {
+  const quickActions = [
+    {
+      icon: <Pencil className="w-4 h-4" />,
+      text: "Write a Review",
+      href: "/universities/review",
+      variant: "default",
+    },
+    {
+      icon: <MessageSquare className="w-4 h-4" />,
+      text: "Start a Discussion",
+      href: "/discussions/new",
+      variant: "outline",
+    },
+    {
+      icon: <Search className="w-4 h-4" />,
+      text: "Browse Universities",
+      href: "/universities",
+      variant: "outline",
+    },
+  ];
+
+  const recentActivity = [
+    {
+      text: "Your review of MIT was upvoted 12 times",
+      time: "2h ago",
+      type: "upvote",
+    },
+    {
+      text: "John reviewed Stanford University",
+      time: "2h ago",
+      type: "review",
+    },
+    {
+      text: "New discussion: 'Best CS programs in the US'",
+      time: "2h ago",
+      type: "discussion",
+    },
+    {
+      text: "Sarah commented on your review",
+      time: "2h ago",
+      type: "comment",
+    },
+    {
+      text: "New reply to your Stanford discussion thread",
+      time: "5h ago",
+      type: "reply",
+    },
+    {
+      text: "Your question about Harvard received 3 answers",
+      time: "1d ago",
+      type: "answer",
+    },
+  ];
+
+  const universities = [
+    { name: "Harvard", rating: 4.8, reviews: 1250 },
+    { name: "MIT", rating: 4.9, reviews: 980 },
+    { name: "Stanford", rating: 4.7, reviews: 890 },
+    { name: "Oxford", rating: 4.6, reviews: 760 },
+    { name: "Cambridge", rating: 4.7, reviews: 850 },
+    { name: "Yale", rating: 4.5, reviews: 720 },
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-purple-950 to-gray-900">
-      {/* Navigation */}
-      <nav className="border-b border-gray-800/40 bg-gray-900/60 backdrop-blur-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="text-xl font-bold text-purple-300">Loop</div>
-            <div className="flex items-center gap-6">
-              <span className="text-gray-300">
-                Welcome, {user?.given_name || 'User'}
-              </span>
-              <LogoutLink className="text-gray-400 hover:text-purple-300 transition-colors">
-                Log out
-              </LogoutLink>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Welcome Section */}
-        <div className="rounded-2xl bg-gray-900/50 border border-purple-900/30 backdrop-blur-sm p-8 mb-8">
-          <p className="text-purple-400 font-medium mb-3">Welcome to Your Dashboard</p>
-          <h1 className="text-3xl font-bold text-white mb-4">
-            Real Insights, Right Choice: Your Guide to the Perfect University Experience
+    <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
+      {/* Welcome Card */}
+      <Card className="bg-gradient-to-r from-card to-background">
+        <CardContent className="pt-6">
+          <Badge className="mb-3">Welcome Back</Badge>
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
+            Real Insights, Right Choice:{" "}
+            <span className="text-primary">Your Guide to the Perfect University Experience</span>
           </h1>
-          <p className="text-gray-400 max-w-3xl">
-            Join thousands of students sharing authentic experiences and making informed decisions about their academic journey.
+          <p className="text-muted-foreground max-w-3xl">
+            Join thousands of students sharing authentic experiences and making informed decisions 
+            about their academic journey.
           </p>
-        </div>
+        </CardContent>
+      </Card>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {[
-            { label: 'Your Reviews', value: '12', icon: '📝' },
-            { label: 'Contributions', value: '48', icon: '🎯' },
-            { label: 'Reputation', value: '1.2k', icon: '⭐' },
-          ].map((stat, idx) => (
-            <div
-              key={idx}
-              className="rounded-xl bg-gray-800/50 border border-gray-700/50 p-6 hover:border-purple-700/40 transition-all duration-300"
-            >
-              <div className="text-2xl mb-2">{stat.icon}</div>
-              <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
-              <div className="text-gray-400">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="rounded-2xl bg-gray-900/50 border border-purple-900/30 p-6">
-            <h3 className="text-xl font-semibold text-purple-300 mb-4">Quick Actions</h3>
-            <div className="space-y-3">
-              <button className="w-full text-left px-4 py-3 rounded-lg bg-purple-600/10 text-purple-300 hover:bg-purple-600/20 transition-colors">
-                ✍️ Write a Review
-              </button>
-              <button className="w-full text-left px-4 py-3 rounded-lg bg-purple-600/10 text-purple-300 hover:bg-purple-600/20 transition-colors">
-                💬 Start a Discussion
-              </button>
-              <button className="w-full text-left px-4 py-3 rounded-lg bg-purple-600/10 text-purple-300 hover:bg-purple-600/20 transition-colors">
-                🔍 Browse Universities
-              </button>
-            </div>
-          </div>
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg font-semibold text-primary">
+              Quick Actions
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {quickActions.map((action, idx) => (
+              <Button
+                key={idx}
+                variant={action.variant}
+                className="w-full justify-start gap-2 text-left"
+                asChild
+              >
+                <Link href={action.href}>
+                  {action.icon}
+                  {action.text}
+                  <ArrowUpRight className="w-4 h-4 ml-auto" />
+                </Link>
+              </Button>
+            ))}
+          </CardContent>
+        </Card>
 
-          {/* Recent Activity */}
-          <div className="rounded-2xl bg-gray-900/50 border border-purple-900/30 p-6">
-            <h3 className="text-xl font-semibold text-purple-300 mb-4">Recent Activity</h3>
-            <div className="space-y-4">
-              {[
-                { text: 'Your review of MIT was upvoted 12 times', time: '2h ago' },
-                { text: 'New reply to your Stanford discussion thread', time: '5h ago' },
-                { text: 'Your question about Harvard received 3 answers', time: '1d ago' },
-              ].map((activity, idx) => (
-                <div key={idx} className="flex items-center justify-between py-2 border-b border-gray-800/50 last:border-0">
-                  <span className="text-gray-300">{activity.text}</span>
-                  <span className="text-sm text-gray-500">{activity.time}</span>
+        {/* Recent Activity */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg font-semibold text-primary">
+              Recent Activity
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {recentActivity.map((activity, idx) => (
+              <div
+                key={idx}
+                className="flex items-center justify-between py-2 border-b border-border last:border-0 group hover:bg-muted/50 rounded-lg transition-colors duration-200 p-2"
+              >
+                <span className="text-foreground group-hover:text-primary transition-colors">
+                  {activity.text}
+                </span>
+                <Badge variant="secondary" className="text-xs">
+                  {activity.time}
+                </Badge>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Trending Universities */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg font-semibold text-primary">
+            Trending Universities
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {universities.map((uni) => (
+              <div
+                key={uni.name}
+                className="p-4 rounded-lg border border-border hover:border-primary/50 transition-all duration-200 hover:shadow-sm group"
+              >
+                <div className="flex items-start justify-between mb-2">
+                  <h3 className="font-medium group-hover:text-primary transition-colors">
+                    {uni.name}
+                  </h3>
+                  <div className="flex items-center gap-1 text-yellow-500">
+                    <Star className="w-4 h-4 fill-current" />
+                    <span className="text-sm font-medium">{uni.rating}</span>
+                  </div>
                 </div>
-              ))}
-            </div>
+                <p className="text-sm text-muted-foreground">
+                  {uni.reviews.toLocaleString()} reviews
+                </p>
+              </div>
+            ))}
           </div>
-        </div>
-      </main>
+        </CardContent>
+      </Card>
     </div>
   );
 }
-
-export default Dashboard;
