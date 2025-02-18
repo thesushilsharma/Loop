@@ -30,7 +30,7 @@ export const universities = pgTable('universities', {
 // Reviews table
 export const reviews = pgTable('reviews', {
     reviewId: serial('review_id').primaryKey(),
-    userId: uuid('user_id').notNull(),
+    authId: integer('auth_Id').notNull(),
     universityId: serial('university_id').notNull().references(() => universities.universityId, {
         onDelete: 'cascade'
     }),
@@ -44,7 +44,7 @@ export const reviews = pgTable('reviews', {
 // Posts table
 export const posts = pgTable('posts', {
     postId: serial('post_id').primaryKey(),
-    userId: uuid('user_id').notNull(),
+    authId: integer('auth_Id').notNull(),
     universityId: serial('university_id').notNull().references(() => universities.universityId, {
         onDelete: 'cascade'
     }),
@@ -58,7 +58,7 @@ export const posts = pgTable('posts', {
 // Comments table
 export const comments = pgTable('comments', {
     commentId: serial('comment_id').primaryKey(),
-    userId: uuid('user_id').notNull(),
+    authId: integer('auth_Id').notNull(),
     postId: serial('post_id').notNull().references(() => posts.postId, {
         onDelete: 'cascade'
     }),
@@ -96,7 +96,7 @@ export const reviewRelations = relations(reviews, ({ one }) => ({
     }),
 }));
 
-// University insert schema
+// Users insert schema
 export const insertUserSchema = createInsertSchema(users).omit({
     id: true,
 });
