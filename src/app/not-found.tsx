@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export default function NotFound() {
@@ -22,12 +23,12 @@ export default function NotFound() {
 
           {/* Action Button */}
           <div className="mt-6">
-            <a
+            <Link
               href="/"
               className="inline-flex items-center px-6 py-3 text-sm font-medium text-primary-foreground bg-primary hover:bg-primary/90 rounded-lg transition-all duration-300"
             >
               Go to Home Page
-            </a>
+            </Link>
           </div>
         </div>
       </div>
