@@ -1,4 +1,4 @@
-import { Github, Linkedin } from "lucide-react"
+import { SiLinkedin, SiGithub } from "react-icons/si";
 import Link from "next/link"
 
 export function Footer() {
@@ -15,7 +15,7 @@ export function Footer() {
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary"
           >
-            <Github className="h-5 w-5" />
+            <SiGithub className="h-5 w-5" />
             <span className="sr-only">GitHub</span>
           </Link>
           <Link
@@ -24,7 +24,7 @@ export function Footer() {
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary"
           >
-            <Linkedin className="h-5 w-5" />
+            <SiLinkedin className="h-5 w-5" />
             <span className="sr-only">LinkedIn</span>
           </Link>
         </div>

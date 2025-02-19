@@ -24,7 +24,7 @@ export const users = pgTable(
     "users",
     {
         id: uuid("id").primaryKey().defaultRandom(),
-        authId: text("auth_Id").notNull(),
+        authId: text("auth_Id").notNull().unique(),
         name: text("name").notNull(),
         emailId: text("email").notNull().unique(), //passwordless login email otp
         createdAt,
