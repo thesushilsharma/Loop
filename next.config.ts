@@ -21,6 +21,24 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: "https",
+        hostname: "www.aud.edu",
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: "https",
+        hostname: "www.ku.ac.ae",
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: "https",
+        hostname: "www.zu.ac.ae",
+        port: '',
+        pathname: '/**',
+      },
     ],
     dangerouslyAllowSVG: true, // Enabling SVG
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;", // Additional security for SVGs

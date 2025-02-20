@@ -1,5 +1,5 @@
 {
-  "id": "8dff1316-6408-4f00-a087-ea14931324e5",
+  "id": "bbca190a-5591-4031-a38c-81577f906a06",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -382,7 +382,7 @@
         },
         "maps_url": {
           "name": "maps_url",
-          "type": "varchar(255)",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         },
@@ -408,7 +408,7 @@
           "name": "rating",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "created_at": {
           "name": "created_at",
