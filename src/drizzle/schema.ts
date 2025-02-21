@@ -43,11 +43,11 @@ export const universities = pgTable("universities", {
     country: varchar("country", { length: 100 }).notNull(),
     region: varchar("region", { length: 100 }).notNull(),
     address: text("address").notNull(),
-    maps: varchar("maps_url", { length: 255 }),
+    maps: text("maps_url"),
     imageUrl: varchar("image_url", { length: 255 }),
     websiteLink: varchar("website_url", { length: 255 }).notNull(),
     linkedinLink: varchar("linkedin_url", { length: 255 }),
-    rating: integer("rating").notNull().notNull(),
+    rating: integer("rating"),
     createdAt,
 });
 
