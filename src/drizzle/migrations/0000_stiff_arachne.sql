@@ -41,7 +41,7 @@ CREATE TABLE "universities" (
 	"image_url" varchar(255),
 	"website_url" varchar(255) NOT NULL,
 	"linkedin_url" varchar(255),
-	"rating" integer,
+	"rating" numeric,
 	"created_at" timestamp DEFAULT now() NOT NULL
 );
 --> statement-breakpoint

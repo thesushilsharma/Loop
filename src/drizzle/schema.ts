@@ -8,6 +8,7 @@ import {
     text,
     uuid,
     index,
+    numeric,
 } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 import { createInsertSchema } from "drizzle-zod";
@@ -46,7 +47,7 @@ export const universities = pgTable("universities", {
     imageUrl: varchar("image_url", { length: 255 }),
     websiteLink: varchar("website_url", { length: 255 }).notNull(),
     linkedinLink: varchar("linkedin_url", { length: 255 }),
-    rating: integer("rating"),
+    rating: numeric("rating"),
     createdAt,
 });
 
