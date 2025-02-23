@@ -12,6 +12,7 @@ import {
 } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 import { createInsertSchema } from "drizzle-zod";
+import { z } from "zod";
 
 const createdAt = timestamp("created_at").notNull().defaultNow();
 const updatedAt = timestamp("updated_at")
@@ -49,6 +50,34 @@ export const universities = pgTable("universities", {
     linkedinLink: varchar("linkedin_url", { length: 255 }),
     rating: numeric("rating"),
     createdAt,
+});
+
+export const uniComments = pgTable('uni-comments', {
+    commentId: serial('comment_id').primaryKey(),
+    universityId: integer('university_id').references(() => universities.universityId),
+    authId: integer('auth_Id').notNull(),
+    content: text('content').notNull(),
+    createdAt: timestamp('created_at').defaultNow(),
+    updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+// Replies Table
+export const uniReplies = pgTable('uni-replies', {
+    replyId: serial('reply_id').primaryKey(),
+    commentId: integer('comment_id').references(() => comments.commentId),
+    authId: integer('auth_Id').notNull(),
+    content: text('content').notNull(),
+    createdAt: timestamp('created_at').defaultNow(),
+    updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+// Votes Table
+export const uniVotes = pgTable('uni-votes', {
+    voteId: serial('vote_id').primaryKey(),
+    commentId: integer('comment_id').references(() => comments.commentId),
+    authId: integer('auth_Id').notNull(),
+    isUpvote: boolean('is_upvote').notNull(),
+    createdAt: timestamp('created_at').defaultNow(),
 });
 
 // Reviews table
@@ -131,6 +160,42 @@ export const universityRelations = relations(universities, ({ many }) => ({
     posts: many(posts),
 }));
 
+export const commentsRelations = relations(uniComments, ({ many, one }) => ({
+    university: one(universities, {
+        fields: [uniComments.universityId],
+        references: [universities.universityId],
+    }),
+    user: one(users, {
+        fields: [uniComments.authId],
+        references: [users.authId],
+    }),
+    replies: many(uniReplies),
+    votes: many(uniVotes),
+}));
+
+export const repliesRelations = relations(uniReplies, ({ one }) => ({
+    comment: one(comments, {
+        fields: [uniReplies.commentId],
+        references: [comments.commentId],
+    }),
+    user: one(users, {
+        fields: [uniReplies.authId],
+        references: [users.authId],
+    }),
+}));
+
+export const votesRelations = relations(uniVotes, ({ one }) => ({
+    comment: one(comments, {
+        fields: [uniVotes.commentId],
+        references: [comments.commentId],
+    }),
+    user: one(users, {
+        fields: [uniVotes.authId],
+        references: [users.authId],
+    }),
+}));
+
+
 export const postRelations = relations(posts, ({ one, many }) => ({
     university: one(universities, {
         fields: [posts.universityId],
@@ -162,6 +227,30 @@ export const insertUserSchema = createInsertSchema(users).omit({
 // University insert schema
 export const insertUniversitySchema = createInsertSchema(universities).omit({
     universityId: true,
+    createdAt: true,
+});
+
+// University comments insert schema
+export const insertUniCommentSchema = createInsertSchema(uniComments, {
+    content: z.string().min(1, "Comment cannot be empty"),
+}).omit({
+    commentId: true,
+    createdAt: true,
+    updatedAt: true,
+});
+
+// University replies insert schema
+export const insertUniReplySchema = createInsertSchema(uniReplies, {
+    content: z.string().min(1, "Reply cannot be empty"),
+}).omit({
+    replyId: true,
+    createdAt: true,
+    updatedAt: true,
+});
+
+// University votes insert schema
+export const insertUniVoteSchema = createInsertSchema(uniVotes).omit({
+    voteId: true,
     createdAt: true,
 });
 

@@ -30,6 +30,32 @@ CREATE TABLE "reviews" (
 	"updated_at" timestamp DEFAULT now()
 );
 --> statement-breakpoint
+CREATE TABLE "uni-comments" (
+	"comment_id" serial PRIMARY KEY NOT NULL,
+	"university_id" integer,
+	"auth_Id" integer NOT NULL,
+	"content" text NOT NULL,
+	"created_at" timestamp DEFAULT now(),
+	"updated_at" timestamp DEFAULT now()
+);
+--> statement-breakpoint
+CREATE TABLE "uni-replies" (
+	"reply_id" serial PRIMARY KEY NOT NULL,
+	"comment_id" integer,
+	"auth_Id" integer NOT NULL,
+	"content" text NOT NULL,
+	"created_at" timestamp DEFAULT now(),
+	"updated_at" timestamp DEFAULT now()
+);
+--> statement-breakpoint
+CREATE TABLE "uni-votes" (
+	"vote_id" serial PRIMARY KEY NOT NULL,
+	"comment_id" integer,
+	"auth_Id" integer NOT NULL,
+	"is_upvote" boolean NOT NULL,
+	"created_at" timestamp DEFAULT now()
+);
+--> statement-breakpoint
 CREATE TABLE "universities" (
 	"university_id" serial PRIMARY KEY NOT NULL,
 	"title" varchar(100) NOT NULL,
@@ -61,6 +87,9 @@ ALTER TABLE "posts" ADD CONSTRAINT "posts_auth_Id_users_auth_Id_fk" FOREIGN KEY 
 ALTER TABLE "posts" ADD CONSTRAINT "posts_university_id_universities_university_id_fk" FOREIGN KEY ("university_id") REFERENCES "public"."universities"("university_id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "reviews" ADD CONSTRAINT "reviews_auth_Id_users_auth_Id_fk" FOREIGN KEY ("auth_Id") REFERENCES "public"."users"("auth_Id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "reviews" ADD CONSTRAINT "reviews_university_id_universities_university_id_fk" FOREIGN KEY ("university_id") REFERENCES "public"."universities"("university_id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "uni-comments" ADD CONSTRAINT "uni-comments_university_id_universities_university_id_fk" FOREIGN KEY ("university_id") REFERENCES "public"."universities"("university_id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "uni-replies" ADD CONSTRAINT "uni-replies_comment_id_comments_comment_id_fk" FOREIGN KEY ("comment_id") REFERENCES "public"."comments"("comment_id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "uni-votes" ADD CONSTRAINT "uni-votes_comment_id_comments_comment_id_fk" FOREIGN KEY ("comment_id") REFERENCES "public"."comments"("comment_id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 CREATE INDEX "user_comment_idx" ON "comments" USING btree ("auth_Id");--> statement-breakpoint
 CREATE INDEX "title_idx" ON "posts" USING btree ("title");--> statement-breakpoint
 CREATE INDEX "user_post_idx" ON "posts" USING btree ("auth_Id");--> statement-breakpoint
