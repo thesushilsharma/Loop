@@ -57,8 +57,8 @@ export const uniComments = pgTable('uni-comments', {
     universityId: integer('university_id').references(() => universities.universityId),
     authId: integer('auth_Id').notNull(),
     content: text('content').notNull(),
-    createdAt: timestamp('created_at').defaultNow(),
-    updatedAt: timestamp('updated_at').defaultNow(),
+    createdAt,
+    updatedAt,
 });
 
 // Replies Table
@@ -67,8 +67,8 @@ export const uniReplies = pgTable('uni-replies', {
     commentId: integer('comment_id').references(() => comments.commentId),
     authId: integer('auth_Id').notNull(),
     content: text('content').notNull(),
-    createdAt: timestamp('created_at').defaultNow(),
-    updatedAt: timestamp('updated_at').defaultNow(),
+    createdAt,
+    updatedAt,
 });
 
 // Votes Table
@@ -77,7 +77,7 @@ export const uniVotes = pgTable('uni-votes', {
     commentId: integer('comment_id').references(() => comments.commentId),
     authId: integer('auth_Id').notNull(),
     isUpvote: boolean('is_upvote').notNull(),
-    createdAt: timestamp('created_at').defaultNow(),
+    createdAt,
 });
 
 // Reviews table
