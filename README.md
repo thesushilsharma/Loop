@@ -19,7 +19,7 @@ Bring Your Own Laptop - Building Blocks for Students
 ## Technology Stack
 
 - Next.js
-- Supabase Database
+- Neon (PostgreSQL) with Drizzle Orm
 - Kinde
 - Typescript
 - Tailwind CSS
@@ -28,7 +28,7 @@ Bring Your Own Laptop - Building Blocks for Students
 
 ## Deployment
 
-You can deploy this repo to a production server using a platform like Vercel, Netlify, Heroku or any of your choice.
+You can deploy this repo to a production server using a platform like Vercel, Netlify, Heroku, or any other platform you choose.
 
 ## Contributing
 
