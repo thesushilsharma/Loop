@@ -11,19 +11,19 @@ export default function Dashboard() {
       icon: <Pencil className="w-4 h-4" />,
       text: "Write a Review",
       href: "/universities/review",
-      variant: "default",
+      variant: "default" as ButtonVariant,
     },
     {
       icon: <MessageSquare className="w-4 h-4" />,
       text: "Start a Discussion",
       href: "/discussions/new",
-      variant: "outline",
+      variant: "outline" as ButtonVariant,
     },
     {
       icon: <Search className="w-4 h-4" />,
       text: "Browse Universities",
-      href: "/universities",
-      variant: "outline",
+      href: "/account/uni",
+      variant: "outline" as ButtonVariant,
     },
   ];
 
