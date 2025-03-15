@@ -23,6 +23,7 @@ Bring Your Own Laptop - Building Blocks for Students
 - Kinde
 - Typescript
 - Tailwind CSS
+- Framer Motion
 
 ## Installation
 
