@@ -1,6 +1,6 @@
-# Loop
+# Loop - Find Your Future
 
-Bring Your Own Laptop - Building Blocks for Students
+Explore universities, read student reviews, and join community discussions to make the right choice.
 
 ## Features
 
