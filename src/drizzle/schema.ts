@@ -48,7 +48,7 @@ export const universities = pgTable("universities", {
     imageUrl: varchar("image_url", { length: 255 }),
     websiteLink: varchar("website_url", { length: 255 }).notNull(),
     linkedinLink: varchar("linkedin_url", { length: 255 }),
-    rating: numeric("rating"),
+    // rating: numeric("rating"),
     createdAt,
 });
 
@@ -64,7 +64,7 @@ export const uniComments = pgTable('uni-comments', {
 // Replies Table
 export const uniReplies = pgTable('uni-replies', {
     replyId: serial('reply_id').primaryKey(),
-    commentId: integer('comment_id').references(() => comments.commentId),
+    commentId: integer('comment_id').references(() => uniComments.commentId),
     authId: integer('auth_Id').notNull(),
     content: text('content').notNull(),
     createdAt,
@@ -74,7 +74,7 @@ export const uniReplies = pgTable('uni-replies', {
 // Votes Table
 export const uniVotes = pgTable('uni-votes', {
     voteId: serial('vote_id').primaryKey(),
-    commentId: integer('comment_id').references(() => comments.commentId),
+    commentId: integer('comment_id').references(() => uniComments.commentId),
     authId: integer('auth_Id').notNull(),
     isUpvote: boolean('is_upvote').notNull(),
     createdAt,
@@ -174,9 +174,9 @@ export const commentsRelations = relations(uniComments, ({ many, one }) => ({
 }));
 
 export const repliesRelations = relations(uniReplies, ({ one }) => ({
-    comment: one(comments, {
+    comment: one(uniComments, {
         fields: [uniReplies.commentId],
-        references: [comments.commentId],
+        references: [uniComments.commentId],
     }),
     user: one(users, {
         fields: [uniReplies.authId],
@@ -185,9 +185,9 @@ export const repliesRelations = relations(uniReplies, ({ one }) => ({
 }));
 
 export const votesRelations = relations(uniVotes, ({ one }) => ({
-    comment: one(comments, {
+    comment: one(uniComments, {
         fields: [uniVotes.commentId],
-        references: [comments.commentId],
+        references: [uniComments.commentId],
     }),
     user: one(users, {
         fields: [uniVotes.authId],
