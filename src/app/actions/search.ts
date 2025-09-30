@@ -16,8 +16,9 @@ export async function fetchUniversities(formData: FormData) {
   console.log("filteredUniversities", filteredUniversities)
 
   filteredUniversities.sort((a, b) => {
-    if (sortBy === "rating") {
-      return (b.rating || 0) - (a.rating || 0); // Handle null ratings
+ if (sortBy === "rating") {
+      // Convert ratings to numbers before subtraction
+      return Number(b.rating || 0) - Number(a.rating || 0);
     } else {
       return a.title.localeCompare(b.title);
     }
