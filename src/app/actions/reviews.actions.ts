@@ -1,3 +1,5 @@
+"user server"
+
 import { db } from "@/drizzle/db";
 import { reviews, users } from "@/drizzle/schema";
 import { eq } from "drizzle-orm";

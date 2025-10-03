@@ -1,7 +1,8 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import { getReviews } from "@/server/reviews";
+import { getReviews } from "@/app/actions/reviews.actions";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
+
 
 /**
  * Custom hook for fetching university reviews using TanStack Query
@@ -15,5 +16,6 @@ export function useReviews(universityId: string) {
     refetchInterval: 300000, // Auto-refetch every 5 minutes
     refetchOnWindowFocus: true, // Refetch when user focuses on the page
     retry: 2, // Retry twice on failure
+    placeholderData: keepPreviousData,
   });
 }
