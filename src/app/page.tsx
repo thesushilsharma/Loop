@@ -1,14 +1,15 @@
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { Footer } from "@/components/footer";
 import Header from "@/components/header";
 import Hero from "@/components/hero";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 export default async function Home() {
   const { isAuthenticated, getUser } = getKindeServerSession();
-  const user = await getUser<void>();
+  const user = await getUser();
+  const isAuth = !!(await isAuthenticated());
   return (
     <div>
-      <Header isAuthenticated={await isAuthenticated()} user={user} />
+      <Header isAuthenticated={isAuth} user={user} />
       <main className="min-h-screen flex flex-col">
         {/* Navigation Bar */}
         <Hero />

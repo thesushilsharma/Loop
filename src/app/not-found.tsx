@@ -1,5 +1,4 @@
 import Link from "next/link";
-import React from "react";
 
 export default function NotFound() {
   return (
@@ -18,7 +17,8 @@ export default function NotFound() {
 
           {/* Subtext */}
           <p className="text-lg font-light text-muted-foreground">
-            Sorry, we can't find that page. You'll find lots to explore on the home page.
+            Sorry, we can't find that page. You'll find lots to explore on the
+            home page.
           </p>
 
           {/* Action Button */}
