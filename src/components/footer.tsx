@@ -1,13 +1,15 @@
-import { SiLinkedin, SiGithub } from "react-icons/si";
-import Link from "next/link"
+import Link from "next/link";
+import { SiGithub, SiLinkedin } from "react-icons/si";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="border-t">
       <div className="container mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between">
-        <p className="text-sm text-muted-foreground">© {currentYear} Loop. All rights reserved.</p>
+        <p className="text-sm text-muted-foreground">
+          © {currentYear} Loop. All rights reserved.
+        </p>
         <div className="flex items-center space-x-4 mt-4 md:mt-0">
           <Link
             href="https://github.com"
@@ -30,6 +32,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
-

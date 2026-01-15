@@ -25,30 +25,30 @@ const Meter = React.forwardRef<HTMLDivElement, MeterProps>(
       labelClassName,
       ...props
     },
-    ref
+    ref,
   ) => {
     // Normalize value between 0 and 1
     const normalizedValue = Math.min(Math.max(value, 0), max) / max;
-    
+
     // Calculate rotation angle (from -90 to 90 degrees)
-    const rotationAngle = -90 + (normalizedValue * 180);
-    
+    const rotationAngle = -90 + normalizedValue * 180;
+
     // Determine color based on value
-    const getColor = () => {
+    const _getColor = () => {
       if (normalizedValue < 0.3) return "bg-red-500"; // Red zone
       if (normalizedValue < 0.4) return "bg-orange-500"; // Orange zone
       if (normalizedValue < 0.6) return "bg-yellow-500"; // Yellow zone
       if (normalizedValue < 0.8) return "bg-green-500"; // Green zone
       return "bg-blue-500"; // Blue zone
     };
-    
+
     // Determine emoji based on value
     const getEmoji = () => {
       if (normalizedValue < 0.3) return "💀"; // Skull for red zone
       if (normalizedValue >= 0.8) return "🔥"; // Fire for blue zone
       return "";
     };
-    
+
     // Size classes
     const sizeClasses = {
       sm: {
@@ -74,11 +74,20 @@ const Meter = React.forwardRef<HTMLDivElement, MeterProps>(
     return (
       <div
         ref={ref}
-        className={cn("relative flex flex-col items-center", sizeClasses[size].container, className)}
+        className={cn(
+          "relative flex flex-col items-center",
+          sizeClasses[size].container,
+          className,
+        )}
         {...props}
       >
         {/* Gauge Background */}
-        <div className={cn("relative overflow-hidden rounded-t-full bg-gray-200", sizeClasses[size].gauge)}>
+        <div
+          className={cn(
+            "relative overflow-hidden rounded-t-full bg-gray-200",
+            sizeClasses[size].gauge,
+          )}
+        >
           {/* Red Zone */}
           <div className="absolute bottom-0 left-0 h-full w-[20%] bg-red-500 rounded-tl-full" />
           {/* Orange Zone */}
@@ -89,40 +98,50 @@ const Meter = React.forwardRef<HTMLDivElement, MeterProps>(
           <div className="absolute bottom-0 left-[50%] h-full w-[30%] bg-green-500" />
           {/* Blue Zone */}
           <div className="absolute bottom-0 left-[80%] h-full w-[20%] bg-blue-500 rounded-tr-full" />
-          
+
           {/* Indicator */}
-          <div 
+          <div
             className={cn(
-              "absolute bottom-0 left-1/2 origin-bottom -translate-x-1/2", 
+              "absolute bottom-0 left-1/2 origin-bottom -translate-x-1/2",
               sizeClasses[size].indicator,
-              indicatorClassName
+              indicatorClassName,
             )}
-            style={{ 
+            style={{
               transform: `translateX(-50%) rotate(${rotationAngle}deg)`,
               backgroundColor: "#f5f5f5",
-              boxShadow: "0 0 4px rgba(0, 0, 0, 0.3)"
+              boxShadow: "0 0 4px rgba(0, 0, 0, 0.3)",
             }}
           />
-          
+
           {/* Indicator Pivot */}
           <div className="absolute bottom-0 left-1/2 h-3 w-3 -translate-x-1/2 translate-y-1/2 rounded-full bg-gray-800" />
         </div>
-        
+
         {/* Labels */}
-        <div className={cn("mt-2 flex w-full justify-between text-sm", labelClassName)}>
+        <div
+          className={cn(
+            "mt-2 flex w-full justify-between text-sm",
+            labelClassName,
+          )}
+        >
           <span className="text-red-500 font-medium">Bad</span>
           <span className="text-green-500 font-medium">WOW</span>
         </div>
-        
+
         {/* Emoji Display */}
         {showEmoji && getEmoji() && (
-          <div className={cn("absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2", sizeClasses[size].emoji)}>
+          <div
+            className={cn(
+              "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
+              sizeClasses[size].emoji,
+            )}
+          >
             {getEmoji()}
           </div>
         )}
       </div>
     );
-  }
+  },
 );
 
 Meter.displayName = "Meter";
