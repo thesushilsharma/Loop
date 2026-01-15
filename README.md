@@ -7,6 +7,9 @@ Explore universities, read student reviews, and join community discussions to ma
 - User Account and Profile
 - Newsletter
 - Discussions, Polls
+- University Reviews
+- Individual university pages - Detailed views with reviews
+- Community forums - Discussion threads
 
 ## Usage
 
