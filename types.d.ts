@@ -1,1 +1,7 @@
-type ButtonVariant = "default" | "outline" | "link" | "destructive" | "secondary" | "ghost";
+type ButtonVariant =
+  | "default"
+  | "outline"
+  | "link"
+  | "destructive"
+  | "secondary"
+  | "ghost";
