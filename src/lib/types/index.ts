@@ -1,6 +1,21 @@
-import { comments, insertCommentSchema, insertPostSchema, insertReviewSchema, insertUniCommentSchema, insertUniReplySchema, insertUniversitySchema, insertUniVoteSchema, insertUserSchema, posts, reviews, uniComments, uniReplies, universities, uniVotes } from "@/drizzle/schema";
-import { z } from "zod"
-
+import type { z } from "zod";
+import type {
+  comments,
+  insertCommentSchema,
+  insertPostSchema,
+  insertReviewSchema,
+  insertUniCommentSchema,
+  insertUniReplySchema,
+  insertUniVoteSchema,
+  insertUniversitySchema,
+  insertUserSchema,
+  posts,
+  reviews,
+  uniComments,
+  uniReplies,
+  uniVotes,
+  universities,
+} from "@/drizzle/schema";
 
 // Types
 export type University = typeof universities.$inferSelect;

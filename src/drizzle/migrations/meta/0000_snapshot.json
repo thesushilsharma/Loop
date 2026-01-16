@@ -76,12 +76,8 @@
           "name": "comments_auth_Id_users_auth_Id_fk",
           "tableFrom": "comments",
           "tableTo": "users",
-          "columnsFrom": [
-            "auth_Id"
-          ],
-          "columnsTo": [
-            "auth_Id"
-          ],
+          "columnsFrom": ["auth_Id"],
+          "columnsTo": ["auth_Id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -89,12 +85,8 @@
           "name": "comments_post_id_posts_post_id_fk",
           "tableFrom": "comments",
           "tableTo": "posts",
-          "columnsFrom": [
-            "post_id"
-          ],
-          "columnsTo": [
-            "post_id"
-          ],
+          "columnsFrom": ["post_id"],
+          "columnsTo": ["post_id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -198,12 +190,8 @@
           "name": "posts_auth_Id_users_auth_Id_fk",
           "tableFrom": "posts",
           "tableTo": "users",
-          "columnsFrom": [
-            "auth_Id"
-          ],
-          "columnsTo": [
-            "auth_Id"
-          ],
+          "columnsFrom": ["auth_Id"],
+          "columnsTo": ["auth_Id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -211,12 +199,8 @@
           "name": "posts_university_id_universities_university_id_fk",
           "tableFrom": "posts",
           "tableTo": "universities",
-          "columnsFrom": [
-            "university_id"
-          ],
-          "columnsTo": [
-            "university_id"
-          ],
+          "columnsFrom": ["university_id"],
+          "columnsTo": ["university_id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -311,12 +295,8 @@
           "name": "reviews_auth_Id_users_auth_Id_fk",
           "tableFrom": "reviews",
           "tableTo": "users",
-          "columnsFrom": [
-            "auth_Id"
-          ],
-          "columnsTo": [
-            "auth_Id"
-          ],
+          "columnsFrom": ["auth_Id"],
+          "columnsTo": ["auth_Id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -324,12 +304,8 @@
           "name": "reviews_university_id_universities_university_id_fk",
           "tableFrom": "reviews",
           "tableTo": "universities",
-          "columnsFrom": [
-            "university_id"
-          ],
-          "columnsTo": [
-            "university_id"
-          ],
+          "columnsFrom": ["university_id"],
+          "columnsTo": ["university_id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -389,12 +365,8 @@
           "name": "uni-comments_university_id_universities_university_id_fk",
           "tableFrom": "uni-comments",
           "tableTo": "universities",
-          "columnsFrom": [
-            "university_id"
-          ],
-          "columnsTo": [
-            "university_id"
-          ],
+          "columnsFrom": ["university_id"],
+          "columnsTo": ["university_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -454,12 +426,8 @@
           "name": "uni-replies_comment_id_comments_comment_id_fk",
           "tableFrom": "uni-replies",
           "tableTo": "comments",
-          "columnsFrom": [
-            "comment_id"
-          ],
-          "columnsTo": [
-            "comment_id"
-          ],
+          "columnsFrom": ["comment_id"],
+          "columnsTo": ["comment_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -512,12 +480,8 @@
           "name": "uni-votes_comment_id_comments_comment_id_fk",
           "tableFrom": "uni-votes",
           "tableTo": "comments",
-          "columnsFrom": [
-            "comment_id"
-          ],
-          "columnsTo": [
-            "comment_id"
-          ],
+          "columnsFrom": ["comment_id"],
+          "columnsTo": ["comment_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -689,16 +653,12 @@
         "users_auth_Id_unique": {
           "name": "users_auth_Id_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "auth_Id"
-          ]
+          "columns": ["auth_Id"]
         },
         "users_email_unique": {
           "name": "users_email_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "email"
-          ]
+          "columns": ["email"]
         }
       },
       "policies": {},
