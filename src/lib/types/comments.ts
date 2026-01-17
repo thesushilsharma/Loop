@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 // Interface for university comments
 export interface UniComment {

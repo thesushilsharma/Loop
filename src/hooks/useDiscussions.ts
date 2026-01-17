@@ -1,8 +1,7 @@
 "use client";
 
-import { getPosts } from "@/app/actions/posts.actions";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-
+import { getPosts } from "@/app/actions/posts.actions";
 
 /**
  * Custom hook for fetching university discussions using TanStack Query

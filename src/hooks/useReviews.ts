@@ -1,8 +1,7 @@
 "use client";
 
-import { getReviews } from "@/app/actions/reviews.actions";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-
+import { getReviews } from "@/app/actions/reviews.actions";
 
 /**
  * Custom hook for fetching university reviews using TanStack Query

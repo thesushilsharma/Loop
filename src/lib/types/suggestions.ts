@@ -1,5 +1,8 @@
-import { z } from 'zod';
-import { createSuggestionSchema, createSuggestionCommentSchema } from '../schemas/suggestions';
+import type { z } from "zod";
+import type {
+  createSuggestionCommentSchema,
+  createSuggestionSchema,
+} from "../schemas/suggestions";
 
 // Interface for suggestion posts
 export interface SuggestionPost {
@@ -42,4 +45,6 @@ export interface SuggestionComment {
 export type CreateSuggestionInput = z.infer<typeof createSuggestionSchema>;
 
 // Type for creating a new suggestion comment
-export type CreateSuggestionCommentInput = z.infer<typeof createSuggestionCommentSchema>;
+export type CreateSuggestionCommentInput = z.infer<
+  typeof createSuggestionCommentSchema
+>;
