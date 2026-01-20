@@ -12,11 +12,11 @@ type PostFormResult = {
 
 export function PostForm({ universityId }: { universityId: string }) {
   const initialState: PostFormResult = { success: false, message: "" };
-  
-  const [formState, formAction, isPending] = useActionState<PostFormResult, FormData>(
-    postDiscussion,
-    initialState
-  );
+
+  const [formState, formAction, isPending] = useActionState<
+    PostFormResult,
+    FormData
+  >(postDiscussion, initialState);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
