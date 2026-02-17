@@ -1,27 +1,31 @@
 "use server";
 
-import { getAllUniversities } from "@/server/uni";
+import { getAllUniversities } from "@/drizzle/queries/uni";
 
 export async function fetchUniversities(formData: FormData) {
   const query = (formData.get("query") as string) || "";
-  console.log("query", query)
   const sortBy = formData.get("sortBy") || undefined;
   const universities = await getAllUniversities();
 
-  const filteredUniversities = universities.filter(
-    (uni) =>
-      (uni.title || "").toLowerCase().includes(query.toLowerCase()) ||
-      (uni.address || "").toLowerCase().includes(query.toLowerCase())
-  );
-  console.log("filteredUniversities", filteredUniversities)
+  const q = query.toLowerCase();
+  const filteredUniversities = universities.filter((uni) => {
+    const title = (uni.title || "").toLowerCase();
+    const address = (uni.address || "").toLowerCase();
+    const country = (uni.country || "").toLowerCase();
+    const region = (uni.region || "").toLowerCase();
+    return (
+      title.includes(q) ||
+      address.includes(q) ||
+      country.includes(q) ||
+      region.includes(q)
+    );
+  });
 
   filteredUniversities.sort((a, b) => {
- if (sortBy === "rating") {
-      // Convert ratings to numbers before subtraction
+    if (sortBy === "rating") {
       return Number(b.rating || 0) - Number(a.rating || 0);
-    } else {
-      return a.title.localeCompare(b.title);
     }
+    return a.title.localeCompare(b.title);
   });
 
   return filteredUniversities;
