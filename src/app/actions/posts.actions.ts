@@ -1,8 +1,8 @@
 "use server";
 
-import { db } from "@/drizzle/db";
-import { posts, users } from "@/drizzle/schema";
 import { eq } from "drizzle-orm";
+import { db } from "@/drizzle/db";
+import { posts } from "@/drizzle/schema";
 
 export async function getPosts(universityId: string) {
   try {
@@ -10,7 +10,7 @@ export async function getPosts(universityId: string) {
     const result = await db
       .select()
       .from(posts)
-      .where(eq(posts.universityId, parseInt(universityId)));
+      .where(eq(posts.universityId, parseInt(universityId, 10)));
 
     // Join with users table to get user information
     const postsWithUsers = await Promise.all(
@@ -34,15 +34,20 @@ export async function getPosts(universityId: string) {
           updated_at: post.updatedAt,
           vote_count: voteCount,
           users: {
-            email: userQuery?.emailId || 'anonymous@user.com',
+            email: userQuery?.emailId || "anonymous@user.com",
           },
         };
-      })
+      }),
     );
 
     return postsWithUsers;
   } catch (error) {
-    console.error(`Error fetching posts for university ${universityId}:`, error);
-    throw new Error(`Failed to fetch university posts: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    console.error(
+      `Error fetching posts for university ${universityId}:`,
+      error,
+    );
+    throw new Error(
+      `Failed to fetch university posts: ${error instanceof Error ? error.message : "Unknown error"}`,
+    );
   }
 }
