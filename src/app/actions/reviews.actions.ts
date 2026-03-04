@@ -1,8 +1,8 @@
-"user server"
+"use server";
 
-import { db } from "@/drizzle/db";
-import { reviews, users } from "@/drizzle/schema";
 import { eq } from "drizzle-orm";
+import { db } from "@/drizzle/db";
+import { reviews } from "@/drizzle/schema";
 
 export async function getReviews(universityId: string) {
   try {
@@ -10,7 +10,7 @@ export async function getReviews(universityId: string) {
     const result = await db
       .select()
       .from(reviews)
-      .where(eq(reviews.universityId, parseInt(universityId)));
+      .where(eq(reviews.universityId, parseInt(universityId, 10)));
 
     // Join with users table to get user information
     const reviewsWithUsers = await Promise.all(
@@ -31,15 +31,20 @@ export async function getReviews(universityId: string) {
           created_at: review.createdAt,
           updated_at: review.updatedAt,
           users: {
-            email: userQuery?.emailId || 'anonymous@user.com',
+            email: userQuery?.emailId || "anonymous@user.com",
           },
         };
-      })
+      }),
     );
 
     return reviewsWithUsers;
   } catch (error) {
-    console.error(`Error fetching reviews for university ${universityId}:`, error);
-    throw new Error(`Failed to fetch university reviews: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    console.error(
+      `Error fetching reviews for university ${universityId}:`,
+      error,
+    );
+    throw new Error(
+      `Failed to fetch university reviews: ${error instanceof Error ? error.message : "Unknown error"}`,
+    );
   }
 }
