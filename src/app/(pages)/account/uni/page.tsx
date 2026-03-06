@@ -1,5 +1,5 @@
-import { SearchForm } from "@/components/search-form";
 import { Suspense } from "react";
+import { SearchForm } from "@/components/search-form";
 import SearchFormSkeleton from "./loading";
 
 export default async function Universities() {
