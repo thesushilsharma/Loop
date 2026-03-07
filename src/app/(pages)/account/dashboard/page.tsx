@@ -1,9 +1,14 @@
-import React from "react";
+import {
+  ArrowUpRight,
+  MessageSquare,
+  Pencil,
+  Search,
+  Star,
+} from "lucide-react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Pencil, MessageSquare, Search, ArrowUpRight, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Dashboard() {
   const quickActions = [
@@ -77,11 +82,13 @@ export default function Dashboard() {
           <Badge className="mb-3">Welcome Back</Badge>
           <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
             Real Insights, Right Choice:{" "}
-            <span className="text-primary">Your Guide to the Perfect University Experience</span>
+            <span className="text-primary">
+              Your Guide to the Perfect University Experience
+            </span>
           </h1>
           <p className="text-muted-foreground max-w-3xl">
-            Join thousands of students sharing authentic experiences and making informed decisions 
-            about their academic journey.
+            Join thousands of students sharing authentic experiences and making
+            informed decisions about their academic journey.
           </p>
         </CardContent>
       </Card>
@@ -95,9 +102,9 @@ export default function Dashboard() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            {quickActions.map((action, idx) => (
+            {quickActions.map((action) => (
               <Button
-                key={idx}
+                key={action.href}
                 variant={action.variant}
                 className="w-full justify-start gap-2 text-left"
                 asChild
@@ -120,9 +127,9 @@ export default function Dashboard() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {recentActivity.map((activity, idx) => (
+            {recentActivity.map((activity) => (
               <div
-                key={idx}
+                key={`${activity.type}-${activity.time}-${activity.text}`}
                 className="flex items-center justify-between py-2 border-b border-border last:border-0 group hover:bg-muted/50 rounded-lg transition-colors duration-200 p-2"
               >
                 <span className="text-foreground group-hover:text-primary transition-colors">
